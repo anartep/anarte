@@ -318,7 +318,7 @@ export function CosmicBackground({
 
         <div className="cosmic-bg__nebula-wrap" data-parallax="nebula">
           <img
-            src="/assets/bg/nevoas.png"
+            src={`${import.meta.env.BASE_URL}assets/bg/nevoas.png`}
             alt=""
             className="cosmic-bg__nebula-img"
             draggable={false}

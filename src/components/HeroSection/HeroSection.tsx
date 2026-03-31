@@ -120,7 +120,7 @@ export function HeroSection() {
           <div className="hero__aura" />
           <div className="hero__frame" />
           <div className="hero__character-wrap">
-            <img src="/assets/hero/personagem.png" alt="Personagem ilustrada" className="hero__character-img" draggable={false} />
+            <img src={`${import.meta.env.BASE_URL}assets/hero/personagem.png`} alt="Personagem ilustrada" className="hero__character-img" draggable={false} />
           </div>
           {FRONT_SPARKLES.map((s, i) => (
             <div key={i} className="hero__front-sparkle" style={{ left: s.x, top: s.y, opacity: 0 }}>

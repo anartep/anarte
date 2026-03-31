@@ -18,7 +18,7 @@ export function SelectedWorks() {
           <article key={project.slug} className="works__card" data-reveal>
             <div className="works__card-img-wrap">
               <img
-                src={project.image}
+                src={`${import.meta.env.BASE_URL}${project.image}`}
                 alt={project.title}
                 className="works__card-img"
                 loading="lazy"
