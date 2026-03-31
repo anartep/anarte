@@ -1,0 +1,263 @@
+/* ================================================================
+   HeroSection — Character popping out of a clean frame
+   ================================================================ */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: 6rem clamp(2rem, 6vw, 7rem) 4rem;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Text                                                               */
+/* ------------------------------------------------------------------ */
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  opacity: 0;
+}
+
+.hero__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+  font-weight: 500;
+  color: #C4B0E0;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.hero__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(4rem, 8vw, 7.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 0.9;
+  margin-bottom: 0.15em;
+  text-shadow: 0 0 80px rgba(184, 169, 201, 0.2);
+}
+
+.hero__divider {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(184, 169, 201, 0.55), transparent);
+  border: none;
+  margin: 1.4rem 0 1.2rem;
+}
+
+.hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+  max-width: 34ch;
+  margin-bottom: 0.6rem;
+}
+
+.hero__micro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.76rem, 0.9vw, 0.85rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+/* --- Actions (artistic pill buttons) ------------------------------ */
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 2.4rem;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.hero__cta--primary {
+  background: linear-gradient(135deg, #6B4FA0, #5A3E8E);
+  border: 1px solid rgba(140, 110, 200, 0.5);
+  color: #ffffff;
+  box-shadow: 0 4px 24px rgba(107, 79, 160, 0.3);
+}
+
+.hero__cta--primary:hover {
+  background: linear-gradient(135deg, #7D5FB5, #6B4FA0);
+  border-color: rgba(160, 130, 220, 0.7);
+  box-shadow:
+    0 6px 32px rgba(107, 79, 160, 0.4),
+    0 0 24px rgba(140, 110, 200, 0.15);
+  transform: translateY(-2px);
+}
+
+.hero__cta--secondary {
+  background: linear-gradient(135deg, #3A2D5C, #2E2448);
+  border: 1px solid rgba(140, 110, 200, 0.3);
+  color: #d4c8e6;
+}
+
+.hero__cta--secondary:hover {
+  background: linear-gradient(135deg, #4A3A6E, #3A2D5C);
+  border-color: rgba(140, 110, 200, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.hero__cta-arrow {
+  font-size: 1.1em;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero__cta--primary:hover .hero__cta-arrow {
+  transform: translateX(5px);
+}
+
+/* --- Social ------------------------------------------------------ */
+
+.hero__social {
+  margin-top: 2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Composition                                                        */
+/* ------------------------------------------------------------------ */
+
+.hero__composition {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__frame-area {
+  position: relative;
+  width: clamp(280px, 26vw, 400px);
+  aspect-ratio: 4 / 3;
+}
+
+.hero__aura {
+  position: absolute;
+  inset: -35%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(184, 169, 201, 0.2) 0%,
+    rgba(42, 24, 88, 0.15) 40%,
+    transparent 70%
+  );
+  animation: auraPulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 1.5px solid rgba(140, 110, 200, 0.35);
+  background: linear-gradient(160deg, #2A2048, #1E1838);
+  box-shadow:
+    0 0 30px rgba(107, 79, 160, 0.08),
+    0 0 80px rgba(42, 24, 88, 0.15);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero__character-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 250%;
+  overflow: hidden;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hero__character-img {
+  position: absolute;
+  width: 130%;
+  left: 50%;
+  bottom: -24px;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+.hero__front-sparkle {
+  position: absolute;
+  color: rgba(184, 169, 201, 0.7);
+  filter: drop-shadow(0 0 6px rgba(184, 169, 201, 0.4));
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Animations                                                         */
+/* ------------------------------------------------------------------ */
+
+@keyframes auraPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.65; transform: scale(1.06); }
+}
+
+@keyframes heroCharFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(-8px); }
+}
+
+.hero__frame-area--floating .hero__character-img {
+  animation: heroCharFloat 5s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Responsive                                                         */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    text-align: center;
+    padding: 7rem 2rem 3rem;
+    gap: 2rem;
+  }
+
+  .hero__composition { order: -1; }
+  .hero__frame-area { width: clamp(240px, 55vw, 340px); }
+  .hero__text { align-items: center; }
+  .hero__subtitle { max-width: none; }
+  .hero__actions { justify-content: center; }
+  .hero__social { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__frame-area--floating .hero__character-img,
+  .hero__aura {
+    animation: none !important;
+  }
+}

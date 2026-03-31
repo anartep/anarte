@@ -1,0 +1,116 @@
+.about {
+  position: relative;
+  z-index: 1;
+  padding: 5rem clamp(2rem, 6vw, 7rem);
+}
+
+.about .section-header {
+  text-align: left;
+}
+
+.about .section-header__ornament {
+  margin-left: 0;
+}
+
+.about .section-header__line {
+  margin-left: 0;
+}
+
+.about__content {
+  max-width: 640px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.about__name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.about__role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #C4B0E0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.about__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 1.4rem;
+  margin-bottom: 1.8rem;
+}
+
+.about__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.about__meta-item svg {
+  color: rgba(184, 169, 201, 0.5);
+  flex-shrink: 0;
+}
+
+.about__meta-item--status {
+  color: rgba(184, 169, 201, 0.8);
+}
+
+.about__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #B8A9C9;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.about__bio {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.about__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about__chip {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d4c8e6;
+  background: linear-gradient(135deg, #3A2D5C, #2E2448);
+  border: 1px solid rgba(140, 110, 200, 0.25);
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.about__chip:hover {
+  border-color: rgba(140, 110, 200, 0.5);
+  color: #ffffff;
+  background: linear-gradient(135deg, #4A3A6E, #3A2D5C);
+}

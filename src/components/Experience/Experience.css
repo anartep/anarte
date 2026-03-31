@@ -1,0 +1,52 @@
+.experience {
+  position: relative;
+  z-index: 1;
+  padding: 4rem clamp(2rem, 6vw, 7rem);
+}
+
+.experience__grid {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.experience__card {
+  flex: 1 1 200px;
+  max-width: 260px;
+  padding: 1.8rem 1.6rem;
+  border: 1px solid rgba(140, 110, 200, 0.25);
+  border-radius: 14px;
+  background: linear-gradient(155deg, #2E2450, #241C40);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.experience__card:hover {
+  border-color: rgba(140, 110, 200, 0.45);
+  background: linear-gradient(155deg, #382C5E, #2E2450);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), 0 0 25px rgba(107, 79, 160, 0.08);
+}
+
+.experience__company {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.experience__location {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.06em;
+}
