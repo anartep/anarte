@@ -1,4 +1,5 @@
 import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { CosmicBackground } from './components/CosmicBackground/CosmicBackground';
 import { Nav } from './components/Nav/Nav';
 import { HeroSection } from './components/HeroSection/HeroSection';
@@ -11,6 +12,7 @@ import { TermsFAQ } from './components/TermsFAQ/TermsFAQ';
 import { Contact } from './components/Contact/Contact';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import './components/shared/shared.css';
+import './styles/light-theme.css';
 
 function Page() {
   useScrollReveal();
@@ -35,8 +37,10 @@ function Page() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <Page />
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <Page />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
