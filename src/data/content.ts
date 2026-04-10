@@ -65,7 +65,7 @@ export const content = {
   },
 
   social: {
-    whatsapp: '#',
+    whatsapp: 'https://wa.me/5599985440904',
     behance: 'https://www.behance.net/anartep',
     linkedin: 'https://linkedin.com/in/anarte-p',
     instagram: 'https://instagram.com/anarte.p',
@@ -103,23 +103,10 @@ export const content = {
         image: 'assets/works/e-se-nao-fosse-um-sonho.jpg',
       },
       {
-        slug: 'com-amor-atena',
-        title: 'Com amor, Atena',
-        category: { pt: 'Capa de livro', en: 'Book cover' },
-        client: 'Editora ZNS',
-        image: 'assets/works/com-amor-atena.png',
-      },
-      {
         slug: 'tempo-abstrato',
         title: 'Tempo Abstrato',
         category: { pt: 'Ilustração editorial', en: 'Editorial illustration' },
         image: 'assets/works/tempo-abstrato.png',
-      },
-      {
-        slug: 'ilustracao-elfa',
-        title: 'Character Design — Elfa',
-        category: { pt: 'Ilustração de personagem', en: 'Character illustration' },
-        image: 'assets/works/ilustracao-wandinha.png',
       },
     ] as Project[],
   },
