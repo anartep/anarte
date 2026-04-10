@@ -50,7 +50,7 @@ function makeStars(n: number): StarData[] {
     id: i,
     x: r() * 100,
     y: r() * 100,
-    size: r() * 28 + 8,
+    size: r() * 16 + 6,
     opacity: r() * 0.4 + 0.6,
     twinkleDuration: r() * 3 + 2,
     twinkleDelay: r() * 8,
@@ -91,11 +91,11 @@ function FourPointStar({ size }: { size: number }) {
 /* ------------------------------------------------------------------ */
 
 const TRAIL_POOL_SIZE = 28;
-const SHOOTING_STAR_COUNT = 5;
+const SHOOTING_STAR_COUNT = 3;
 
 export function CosmicBackground({
-  starCount = 10,
-  particleCount = 30,
+  starCount = 6,
+  particleCount = 15,
   className = '',
 }: CosmicBackgroundProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -370,7 +370,7 @@ export function CosmicBackground({
 
       {/* Cursor & trail outside .cosmic-bg to escape z-index:-1 stacking context */}
       <div ref={starCursorRef} className="cosmic-bg__star-cursor">
-        <FourPointStar size={30} />
+        <FourPointStar size={18} />
       </div>
 
       <div ref={trailRef} className="cosmic-bg__trail">

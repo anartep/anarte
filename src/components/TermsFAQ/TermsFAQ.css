@@ -1,15 +1,11 @@
 .faq {
   position: relative;
   z-index: 1;
-  padding: 5rem clamp(2rem, 6vw, 7rem);
+  padding: 4rem clamp(2rem, 5vw, 6rem);
 }
 
 .faq .section-header {
   text-align: left;
-}
-
-.faq .section-header__ornament {
-  margin-left: 0;
 }
 
 .faq .section-header__line {
@@ -18,31 +14,25 @@
 
 .faq__intro {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 2rem;
-  max-width: 50ch;
+  max-width: 46ch;
 }
 
 .faq__list {
-  max-width: 720px;
+  max-width: 560px;
   opacity: 0;
   transform: translateY(20px);
 }
 
 .faq__item {
-  padding: 0 1.2rem;
-  margin-bottom: 0.5rem;
-  border-radius: 16px;
-  background: linear-gradient(155deg, #2A2050, #1E1640);
-  border: 1px solid rgba(139, 92, 246, 0.1);
-  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.07);
 }
 
-.faq__item:hover {
-  background: linear-gradient(155deg, #322858, #2A2050);
-  border-color: rgba(139, 92, 246, 0.25);
+.faq__item:last-child {
+  border-bottom: none;
 }
 
 .faq__question {
@@ -50,30 +40,31 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1.2rem 0;
+  padding: 1.1rem 0;
   background: none;
   border: none;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
   text-align: left;
   transition: color 0.3s ease;
 }
 
 .faq__question:hover {
-  color: #B8A9C9;
+  color: rgba(196, 176, 224, 0.9);
 }
 
 .faq__chevron {
   flex-shrink: 0;
-  color: rgba(184, 169, 201, 0.4);
+  color: rgba(139, 92, 246, 0.25);
   transition: transform 0.35s ease, color 0.35s ease;
 }
 
 .faq__item--open .faq__chevron {
   transform: rotate(180deg);
-  color: rgba(184, 169, 201, 0.7);
+  color: rgba(139, 92, 246, 0.5);
 }
 
 .faq__answer-wrap {
@@ -85,14 +76,14 @@
 
 .faq__item--open .faq__answer-wrap {
   max-height: 200px;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1.1rem;
 }
 
 .faq__answer {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
   padding-right: 2rem;
 }

@@ -1,15 +1,11 @@
 .about {
   position: relative;
   z-index: 1;
-  padding: 5rem clamp(2rem, 6vw, 7rem);
+  padding: 4rem clamp(2rem, 5vw, 6rem);
 }
 
 .about .section-header {
   text-align: left;
-}
-
-.about .section-header__ornament {
-  margin-left: 0;
 }
 
 .about .section-header__line {
@@ -17,26 +13,26 @@
 }
 
 .about__content {
-  max-width: 640px;
+  max-width: 560px;
   opacity: 0;
   transform: translateY(20px);
 }
 
 .about__name {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 400;
   font-style: italic;
   color: #ffffff;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .about__role {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  color: #C4B0E0;
-  letter-spacing: 0.15em;
+  color: rgba(196, 176, 224, 0.6);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
@@ -45,72 +41,70 @@
   flex-wrap: wrap;
   gap: 1.2rem;
   margin-top: 1.4rem;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
 }
 
 .about__meta-item {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .about__meta-item svg {
-  color: rgba(184, 169, 201, 0.5);
+  color: rgba(184, 169, 201, 0.35);
   flex-shrink: 0;
 }
 
 .about__meta-item--status {
-  color: rgba(184, 169, 201, 0.8);
+  color: rgba(184, 169, 201, 0.65);
 }
 
 .about__status-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: #B8A9C9;
-  animation: statusPulse 2s ease-in-out infinite;
+  background: rgba(139, 92, 246, 0.5);
+  animation: statusPulse 2.5s ease-in-out infinite;
 }
 
 @keyframes statusPulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  50% { opacity: 0.25; }
 }
 
 .about__bio {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.94rem;
+  font-size: 0.88rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.8;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
 }
 
 .about__chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .about__chip {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #d4c8e6;
-  background: linear-gradient(135deg, #3A2D5C, #2E2448);
-  border: 1px solid rgba(140, 110, 200, 0.25);
-  border-radius: 50px;
-  padding: 0.4rem 1rem;
+  color: rgba(196, 176, 224, 0.5);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 2px;
+  padding: 0.3rem 0.7rem;
   transition: all 0.3s ease;
 }
 
 .about__chip:hover {
-  border-color: rgba(140, 110, 200, 0.5);
-  color: #ffffff;
-  background: linear-gradient(135deg, #4A3A6E, #3A2D5C);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: rgba(196, 176, 224, 0.8);
 }

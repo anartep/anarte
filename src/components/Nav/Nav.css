@@ -1,7 +1,3 @@
-/* ================================================================
-   Nav — Minimal sticky top bar
-   ================================================================ */
-
 .nav {
   position: fixed;
   top: 0;
@@ -13,25 +9,25 @@
   justify-content: center;
   gap: clamp(1rem, 3vw, 2.5rem);
   padding: 0 clamp(1.5rem, 4vw, 4rem);
-  height: 52px;
+  height: 48px;
   background: transparent;
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
 .nav--scrolled {
-  background: rgba(8, 11, 20, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 rgba(184, 169, 201, 0.08);
+  background: rgba(8, 11, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(139, 92, 246, 0.06);
 }
 
 .nav__link {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.45);
   text-decoration: none;
   padding: 0.4rem 0;
   border-bottom: 1px solid transparent;
@@ -39,8 +35,8 @@
 }
 
 .nav__link:hover {
-  color: #B8A9C9;
-  border-bottom-color: rgba(184, 169, 201, 0.35);
+  color: rgba(255, 255, 255, 0.75);
+  border-bottom-color: rgba(139, 92, 246, 0.25);
 }
 
 .nav__toggle {
@@ -49,16 +45,17 @@
   background: none;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   padding: 0;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
+  opacity: 0.6;
 }
 
 .nav__toggle:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .nav__flag {
@@ -76,7 +73,7 @@
     padding: 0 1rem;
   }
   .nav__link {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     letter-spacing: 0.12em;
   }
   .nav__toggle {
