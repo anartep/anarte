@@ -1,37 +1,70 @@
 .experience {
   position: relative;
   z-index: 1;
-  padding: 3rem clamp(2rem, 5vw, 6rem);
+  padding: 4rem clamp(2rem, 6vw, 7rem);
 }
 
 .experience__grid {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.2rem;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .experience__card {
+  flex: 1 1 200px;
+  max-width: 260px;
+  padding: 1.8rem 1.6rem;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: 20px;
+  background: linear-gradient(155deg, #2A2050, #1E1640);
   text-align: center;
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience__card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8B5CF6, #D946A8, #F472B6);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.experience__card:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  background: linear-gradient(155deg, #342860, #2A2050);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 25px rgba(139, 92, 246, 0.08);
+}
+
+.experience__card:hover::after {
+  opacity: 1;
 }
 
 .experience__company {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 500;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 0.15rem;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
 }
 
 .experience__location {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.76rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   letter-spacing: 0.06em;
 }
