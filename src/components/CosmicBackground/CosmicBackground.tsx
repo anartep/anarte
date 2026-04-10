@@ -320,7 +320,13 @@ export function CosmicBackground({
           <img
             src={`${import.meta.env.BASE_URL}assets/bg/nevoas.png`}
             alt=""
-            className="cosmic-bg__nebula-img"
+            className="cosmic-bg__nebula-img cosmic-bg__nebula-img--dark"
+            draggable={false}
+          />
+          <img
+            src={`${import.meta.env.BASE_URL}assets/bg/nevoas-light.png`}
+            alt=""
+            className="cosmic-bg__nebula-img cosmic-bg__nebula-img--light"
             draggable={false}
           />
         </div>

@@ -28,7 +28,8 @@
     radial-gradient(ellipse at 50% 40%, #F5F0FA 0%, #F5F0FA 70%);
 }
 
-[data-theme="light"] .cosmic-bg__nebula-wrap { opacity: 0.06; }
+[data-theme="light"] .cosmic-bg__nebula-img--dark { opacity: 0; }
+[data-theme="light"] .cosmic-bg__nebula-img--light { opacity: 0.35; }
 [data-theme="light"] .cosmic-bg__stars { opacity: 0.15; }
 [data-theme="light"] .cosmic-bg__particles { opacity: 0.2; }
 [data-theme="light"] .cosmic-bg__shooting-stars { opacity: 0.25; }

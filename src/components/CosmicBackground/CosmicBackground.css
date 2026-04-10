@@ -31,14 +31,25 @@
 }
 
 .cosmic-bg__nebula-img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: screen;
   opacity: 0.35;
   user-select: none;
   animation: nebulaBreathe 50s ease-in-out infinite;
+  transition: opacity 0.6s ease;
+}
+
+.cosmic-bg__nebula-img--dark {
+  mix-blend-mode: screen;
+}
+
+.cosmic-bg__nebula-img--light {
+  opacity: 0;
+  mix-blend-mode: multiply;
 }
 
 /* --- Mouse glow --------------------------------------------------- */
