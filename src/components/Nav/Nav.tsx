@@ -38,7 +38,7 @@ export function Nav() {
         onClick={toggle}
         aria-label="Toggle language"
       >
-        {lang === 'pt' ? 'EN' : 'PT'}
+        {lang === 'pt' ? '🇺🇸' : '🇧🇷'}
       </button>
     </nav>
   );
