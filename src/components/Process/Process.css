@@ -17,20 +17,31 @@
   position: relative;
   padding: 1.8rem 1.4rem;
   text-align: center;
-  border: 1px solid rgba(140, 110, 200, 0.2);
-  border-radius: 14px;
-  background: linear-gradient(155deg, #2A2048, #221A3C);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 20px;
+  background: linear-gradient(155deg, #2A2050, #1E1640);
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.4s ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.process__step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
 }
 
 .process__step:hover {
-  border-color: rgba(140, 110, 200, 0.4);
-  background: linear-gradient(155deg, #342A56, #2A2048);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+  border-color: rgba(139, 92, 246, 0.3);
+  background: linear-gradient(155deg, #342860, #2A2050);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 92, 246, 0.06);
 }
 
 .process__number {

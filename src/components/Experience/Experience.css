@@ -17,21 +17,39 @@
   flex: 1 1 200px;
   max-width: 260px;
   padding: 1.8rem 1.6rem;
-  border: 1px solid rgba(140, 110, 200, 0.25);
-  border-radius: 14px;
-  background: linear-gradient(155deg, #2E2450, #241C40);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: 20px;
+  background: linear-gradient(155deg, #2A2050, #1E1640);
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience__card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8B5CF6, #D946A8, #F472B6);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .experience__card:hover {
-  border-color: rgba(140, 110, 200, 0.45);
-  background: linear-gradient(155deg, #382C5E, #2E2450);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), 0 0 25px rgba(107, 79, 160, 0.08);
+  border-color: rgba(139, 92, 246, 0.35);
+  background: linear-gradient(155deg, #342860, #2A2050);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 25px rgba(139, 92, 246, 0.08);
+}
+
+.experience__card:hover::after {
+  opacity: 1;
 }
 
 .experience__company {

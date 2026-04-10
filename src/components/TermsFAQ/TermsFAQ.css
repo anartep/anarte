@@ -33,16 +33,16 @@
 
 .faq__item {
   padding: 0 1.2rem;
-  margin-bottom: 0.4rem;
-  border-radius: 12px;
-  background: linear-gradient(155deg, #2A2048, #221A3C);
-  border: 1px solid rgba(140, 110, 200, 0.15);
+  margin-bottom: 0.5rem;
+  border-radius: 16px;
+  background: linear-gradient(155deg, #2A2050, #1E1640);
+  border: 1px solid rgba(139, 92, 246, 0.1);
   transition: all 0.3s ease;
 }
 
 .faq__item:hover {
-  background: linear-gradient(155deg, #322852, #2A2048);
-  border-color: rgba(140, 110, 200, 0.3);
+  background: linear-gradient(155deg, #322858, #2A2050);
+  border-color: rgba(139, 92, 246, 0.25);
 }
 
 .faq__question {

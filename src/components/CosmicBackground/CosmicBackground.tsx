@@ -91,7 +91,7 @@ function FourPointStar({ size }: { size: number }) {
 /* ------------------------------------------------------------------ */
 
 const TRAIL_POOL_SIZE = 28;
-const SHOOTING_STAR_COUNT = 2;
+const SHOOTING_STAR_COUNT = 5;
 
 export function CosmicBackground({
   starCount = 10,
@@ -279,13 +279,13 @@ export function CosmicBackground({
           .to(node, { x: endX, y: endY, duration, ease: 'none' }, '<')
           .to(node, { opacity: 0, duration: 0.5 }, `-=${0.5}`);
 
-        const next = 8000 + Math.random() * 12000;
+        const next = 4000 + Math.random() * 8000;
         const t = setTimeout(() => launchStar(node), next);
         shootingTimers.push(t);
       }
 
       shooters.forEach((node, i) => {
-        const initialDelay = 4000 + i * 6000 + Math.random() * 5000;
+        const initialDelay = 1500 + i * 3000 + Math.random() * 3000;
         const t = setTimeout(() => launchStar(node), initialDelay);
         shootingTimers.push(t);
       });

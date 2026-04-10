@@ -87,45 +87,65 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.85rem 2.4rem;
+  padding: 0.9rem 2.6rem;
   border-radius: 50px;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.76rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
+  overflow: hidden;
+}
+
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero__cta:hover::before {
+  left: 100%;
 }
 
 .hero__cta--primary {
-  background: linear-gradient(135deg, #6B4FA0, #5A3E8E);
-  border: 1px solid rgba(140, 110, 200, 0.5);
+  background: linear-gradient(135deg, #8B5CF6, #D946A8, #F472B6);
+  border: none;
   color: #ffffff;
-  box-shadow: 0 4px 24px rgba(107, 79, 160, 0.3);
+  box-shadow:
+    0 4px 20px rgba(139, 92, 246, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .hero__cta--primary:hover {
-  background: linear-gradient(135deg, #7D5FB5, #6B4FA0);
-  border-color: rgba(160, 130, 220, 0.7);
+  background: linear-gradient(135deg, #9D6EFF, #E058BA, #F584C4);
   box-shadow:
-    0 6px 32px rgba(107, 79, 160, 0.4),
-    0 0 24px rgba(140, 110, 200, 0.15);
-  transform: translateY(-2px);
+    0 8px 32px rgba(139, 92, 246, 0.45),
+    0 0 20px rgba(217, 70, 168, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
 }
 
 .hero__cta--secondary {
-  background: linear-gradient(135deg, #3A2D5C, #2E2448);
-  border: 1px solid rgba(140, 110, 200, 0.3);
+  background: linear-gradient(135deg, #4A3A6E, #3A2D5C);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   color: #d4c8e6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .hero__cta--secondary:hover {
-  background: linear-gradient(135deg, #4A3A6E, #3A2D5C);
-  border-color: rgba(140, 110, 200, 0.5);
+  background: linear-gradient(135deg, #5A4A80, #4A3A6E);
+  border-color: rgba(139, 92, 246, 0.5);
   color: #ffffff;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .hero__cta-arrow {
