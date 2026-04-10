@@ -38,7 +38,11 @@ export function Nav() {
         onClick={toggle}
         aria-label="Toggle language"
       >
-        {lang === 'pt' ? '🇺🇸' : '🇧🇷'}
+        <img
+          src={`${import.meta.env.BASE_URL}assets/flag-${lang === 'pt' ? 'us' : 'br'}.png`}
+          alt={lang === 'pt' ? 'English' : 'Português'}
+          className="nav__flag"
+        />
       </button>
     </nav>
   );
