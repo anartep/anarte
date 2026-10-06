@@ -2,13 +2,15 @@ import { useLang, useOverlay } from '../context';
 import { bookstore } from '../data/content';
 import { Sparkle } from './Icons';
 import inverno from '../assets/bookstore/livraria-inverno.webp';
+import desafiando from '../assets/bookstore/livraria-desafiando.webp';
 import thomasNelson from '../assets/bookstore/livraria-thomas-nelson.webp';
+import ouviDizer from '../assets/bookstore/livraria-ouvi-dizer.webp';
 import atena from '../assets/bookstore/livraria-atena.webp';
 import './Bookstore.css';
 
-const photos: Record<string, string> = { inverno, 'thomas-nelson': thomasNelson, atena };
+const photos: Record<string, string> = { inverno, desafiando, 'thomas-nelson': thomasNelson, 'ouvi-dizer': ouviDizer, atena };
 
-/** Small strip of polaroid photos of the books on bookstore shelves. */
+/** Small strip of polaroid photos of the books in bookstores. Click opens the project when there is one. */
 export function Bookstore() {
   const { t } = useLang();
   const { openProjects } = useOverlay();
@@ -17,17 +19,26 @@ export function Bookstore() {
       <div className="container bookstore__inner">
         <p className="eyebrow bookstore__label" data-reveal><Sparkle /> {t(bookstore.label)}</p>
         <ul className="polaroids">
-          {bookstore.items.map((b, i) => (
-            <li key={b.id} style={{ ['--i' as string]: i }} data-reveal>
-              <button type="button" className="polaroid" onClick={() => openProjects({ slug: b.project })} aria-label={b.title}>
+          {bookstore.items.map((b, i) => {
+            const inner = (
+              <>
                 <span className="polaroid__tape" aria-hidden="true" />
                 <span className="polaroid__photo">
-                  <img src={photos[b.id]} alt="" width={560} height={700} loading="lazy" decoding="async" />
+                  <img src={photos[b.id]} alt={b.project ? '' : b.title} loading="lazy" decoding="async" />
                 </span>
                 <span className="polaroid__caption">{b.title}</span>
-              </button>
-            </li>
-          ))}
+              </>
+            );
+            return (
+              <li key={b.id} style={{ ['--i' as string]: i }} data-reveal>
+                {b.project ? (
+                  <button type="button" className="polaroid polaroid--link" onClick={() => openProjects({ slug: b.project })} aria-label={b.title}>{inner}</button>
+                ) : (
+                  <figure className="polaroid">{inner}</figure>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

@@ -251,7 +251,9 @@ export const bookstore = {
   label: { pt: 'Nas livrarias', en: 'In bookstores' } as T,
   items: [
     { id: 'inverno', title: 'O inverno do seu coração', project: 'o-inverno-do-seu-coracao' },
+    { id: 'desafiando', title: 'Desafiando as pistas com você' },
     { id: 'thomas-nelson', title: 'Thomas Nelson Brasil', project: 'o-inverno-do-seu-coracao' },
+    { id: 'ouvi-dizer', title: 'Ouvi dizer que era você' },
     { id: 'atena', title: 'Com amor, Atena', project: 'com-amor-atena' },
-  ],
+  ] as { id: string; title: string; project?: string }[],
 };
