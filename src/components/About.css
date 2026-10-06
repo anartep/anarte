@@ -4,7 +4,7 @@
   transition: background-color .4s var(--ease);
 }
 .about__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(40px, 6vw, 96px); align-items: center; padding-bottom: clamp(70px, 9vw, 120px); }
-.about__name { margin-top: 18px; display: flex; flex-wrap: wrap; column-gap: .4em; }
+.about__name { margin-top: 18px; display: flex; flex-wrap: wrap; column-gap: .3em; font-family: var(--font-display); font-size: clamp(3.4rem, 2.2rem + 4.8vw, 6.4rem); font-weight: 400; line-height: .95; letter-spacing: .01em; }
 .about__word { display: inline-block; transition: transform .5s var(--ease-spring), color .3s; }
 .about__name:hover .about__word { transform: translateY(-6px) rotate(calc((var(--w) - 1) * 3deg)); }
 .about__name:hover .about__word:nth-child(2) { color: var(--sun); }
