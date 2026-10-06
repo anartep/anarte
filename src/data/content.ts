@@ -9,7 +9,7 @@ import leitoraRuiva from '../assets/works/leitora-ruiva.webp';
 export const contact = {
   name: 'Ana Paula Silva',
   email: 'anapaulapovao@gmail.com',
-  phoneDisplay: '(99) 98544-0904',
+  phoneDisplay: { pt: '(99) 98544-0904', en: '+55 (99) 98544-0904' } as T,
   whatsapp: 'https://wa.me/5599985440904',
   whatsappMessage: {
     pt: 'Olá, Ana! Vim pelo seu portfólio e gostaria de conversar sobre um projeto.',

@@ -53,7 +53,7 @@ export function Contact() {
               <dt>{t(contactSection.phone)}</dt>
               <dd>
                 <a className="contact__value" href={whatsappLink(t(contact.whatsappMessage))} target="_blank" rel="noopener noreferrer">
-                  {contact.phoneDisplay}
+                  {t(contact.phoneDisplay)}
                   <WhatsApp />
                 </a>
               </dd>

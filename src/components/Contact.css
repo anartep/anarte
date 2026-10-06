@@ -85,5 +85,10 @@
   .contact__stamp-area { min-height: 300px; }
 }
 @media (max-width: 600px) {
+  .contact__actions { flex-wrap: nowrap; gap: 10px; }
+  .contact__cta { flex: 1; min-width: 0; padding: 0 .9em; font-size: 12px; letter-spacing: .1em; white-space: nowrap; min-height: 54px; }
+  .contact__icon { width: 50px; height: 50px; flex-shrink: 0; }
+}
+@media (max-width: 600px) {
   .footer__inner { justify-content: center; text-align: center; padding-bottom: 96px; }
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLang } from '../context';
 import { publishers } from '../data/content';
 import { PublisherMark, Sparkle } from './Icons';
@@ -7,6 +7,19 @@ import './Publishers.css';
 export function Publishers() {
   const { t } = useLang();
   const [flipped, setFlipped] = useState<string | null>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  // tap/click anywhere outside the coins (or press Esc) turns the open coin back
+  useEffect(() => {
+    if (!flipped) return;
+    const onDown = (e: PointerEvent) => {
+      if (!(e.target as HTMLElement).closest('.coin')) setFlipped(null);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setFlipped(null); };
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey); };
+  }, [flipped]);
 
   return (
     <section className="publishers" id="editoras" aria-labelledby="pub-title">
@@ -16,7 +29,7 @@ export function Publishers() {
           <h2 className="section-title" id="pub-title" data-reveal style={{ ['--d' as string]: '.06s' }}>{t(publishers.title)}</h2>
           <p className="sec-head__hint" data-reveal style={{ ['--d' as string]: '.12s' }}>{t(publishers.hint)}</p>
         </header>
-        <ul className="coins">
+        <ul className="coins" ref={listRef}>
           {publishers.items.map((p, i) => (
             <li key={p.id} data-reveal style={{ ['--d' as string]: `${0.1 + i * 0.07}s`, ['--i' as string]: i }}>
               <button
