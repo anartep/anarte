@@ -6,7 +6,6 @@
 .polaroids li:nth-child(2) { --rot: 3deg; --dy: 14px; }
 .polaroids li:nth-child(3) { --rot: -1.5deg; --dy: 4px; }
 .polaroids li:nth-child(4) { --rot: 2.5deg; --dy: 12px; }
-.polaroids li:nth-child(5) { --rot: -3deg; --dy: 2px; }
 
 .polaroid {
   position: relative; display: grid; gap: 6px; width: clamp(108px, 13vw, 190px); margin: 0;
@@ -40,7 +39,7 @@
 .polaroids li:nth-child(even) .polaroid__tape { rotate: 4deg; background: color-mix(in srgb, var(--violet-300) 85%, transparent); }
 
 @media (max-width: 600px) {
-  .polaroid { padding: 6% 6% 3%; width: clamp(96px, 27vw, 140px); }
+  .polaroid { padding: 6% 6% 3%; width: clamp(120px, 38vw, 170px); }
   .polaroid__caption { font-size: .95rem; }
   .polaroid__tape { height: 13px; top: -7px; }
 }

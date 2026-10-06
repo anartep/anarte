@@ -1,14 +1,13 @@
 import { useLang, useOverlay } from '../context';
 import { bookstore } from '../data/content';
 import { Sparkle } from './Icons';
-import inverno from '../assets/bookstore/livraria-inverno.webp';
 import desafiando from '../assets/bookstore/livraria-desafiando.webp';
 import thomasNelson from '../assets/bookstore/livraria-thomas-nelson.webp';
 import ouviDizer from '../assets/bookstore/livraria-ouvi-dizer.webp';
 import atena from '../assets/bookstore/livraria-atena.webp';
 import './Bookstore.css';
 
-const photos: Record<string, string> = { inverno, desafiando, 'thomas-nelson': thomasNelson, 'ouvi-dizer': ouviDizer, atena };
+const photos: Record<string, string> = { desafiando, 'thomas-nelson': thomasNelson, 'ouvi-dizer': ouviDizer, atena };
 
 /** Small strip of polaroid photos of the books in bookstores. Click opens the project when there is one. */
 export function Bookstore() {
