@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR" data-theme="day">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anarte — Ilustração Digital & Commissions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Anarte — Ana Paula Silva · Ilustradora</title>
+    <meta name="description" content="Portfólio de Ana Paula Silva (Anarte): ilustradora digital especializada em capas de livros, personagens, mapas ilustrados e projetos editoriais." />
+    <meta name="theme-color" content="#a95af8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body, #root { width: 100%; height: 100%; }
-      body, *, *::before, *::after { cursor: none !important; }
-      body {
-        background: #080B14;
-        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0D1020; }
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, #6B4FA0, #E87EC2);
-        border-radius: 10px;
-        border: 2px solid #0D1020;
-      }
-      ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #7D5FB5, #F090D0); }
-      html { scrollbar-color: #6B4FA0 #0D1020; scrollbar-width: thin; }
-    </style>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Anarte — Ana Paula Silva · Ilustradora" />
+    <meta property="og:description" content="Capas de livros, personagens, mapas ilustrados e projetos editoriais." />
+    <meta property="og:image" content="https://anartep.github.io/anarte/og-image.jpg" />
+    <meta property="og:url" content="https://anartep.github.io/anarte/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script>
+      // aplica o tema salvo antes da primeira pintura (evita "piscar")
+      try {
+        var t = localStorage.getItem('anarte-theme');
+        if (t === 'day' || t === 'night') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

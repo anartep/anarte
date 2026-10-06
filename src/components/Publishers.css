@@ -1,0 +1,38 @@
+.publishers { background: var(--bg-soft); padding: clamp(30px, 4vw, 50px) 0 clamp(70px, 9vw, 120px); transition: background-color .4s var(--ease); }
+
+/* shared section header */
+.sec-head { display: grid; justify-items: center; text-align: center; gap: 14px; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-head .section-title { max-width: 20ch; text-wrap: balance; }
+.sec-head__hint { font-size: var(--fs-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-muted); }
+
+.coins { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(18px, 3.4vw, 54px); }
+.coin {
+  display: block; width: clamp(118px, 13vw, 168px); aspect-ratio: 1; perspective: 700px; border-radius: 50%;
+  animation: bob 5s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -0.9s);
+}
+li:nth-child(1) .coin { --i: 0; } li:nth-child(2) .coin { --i: 1; } li:nth-child(3) .coin { --i: 2; } li:nth-child(4) .coin { --i: 3; } li:nth-child(5) .coin { --i: 4; }
+@keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+.coin__inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .8s var(--ease-spring); }
+.coin:hover .coin__inner, .coin.is-flipped .coin__inner { transform: rotateY(180deg); }
+.coin__face {
+  position: absolute; inset: 0; display: grid; place-items: center; border-radius: 50%;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.coin__front {
+  background: var(--coin); color: var(--coin-mark);
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .14), 0 0 0 2.5px var(--ink), 6px 8px 0 0 var(--ink);
+}
+:root[data-theme='night'] .coin__front { box-shadow: inset 0 0 0 1.5px rgba(236, 220, 255, .25), 0 22px 40px -22px #000; }
+.coin__back {
+  transform: rotateY(180deg); background: var(--sun); color: var(--ink); padding: 18%;
+  box-shadow: 0 0 0 2.5px var(--ink), -6px 8px 0 0 var(--ink);
+  text-align: center; align-content: center; gap: 6px;
+}
+.coin__mark { width: 66%; height: 62%; }
+.coin__mark--ps { width: 58%; height: 58%; }
+.coin__mark--venus { width: 46%; height: 52%; }
+.coin__mark--thomasnelson { width: 70%; height: 60%; }
+.coin__mark--qualis { width: 72%; }
+.coin__mark--novoseculo { width: 70%; }
+.coin__star { width: 18px; height: 18px; animation: spin 6s linear infinite; }
+.coin__name { font-size: clamp(10px, .9vw, 12.5px); font-weight: 700; line-height: 1.35; letter-spacing: .02em; }
