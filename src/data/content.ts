@@ -247,12 +247,26 @@ export const faq = {
   ] as FaqItem[],
 };
 
-export const bookstore = {
-  label: { pt: 'Nas livrarias', en: 'In bookstores' } as T,
+export interface GalleryItem { id: string; title: string | T; project?: string }
+
+export const gallery = {
+  label: { pt: 'Galeria', en: 'Gallery' } as T,
+  hint: { pt: 'passe o mouse para pausar · clique para ampliar', en: 'hover to pause · click to enlarge' } as T,
+  hintTouch: { pt: 'arraste para ver · toque para ampliar', en: 'swipe to browse · tap to enlarge' } as T,
+  open: { pt: 'Ver projeto', en: 'View project' } as T,
+  prev: { pt: 'Foto anterior', en: 'Previous photo' } as T,
+  next: { pt: 'Próxima foto', en: 'Next photo' } as T,
   items: [
+    { id: 'rosto-inverno', title: 'O inverno do seu coração', project: 'o-inverno-do-seu-coracao' },
     { id: 'desafiando', title: 'Desafiando as pistas com você' },
-    { id: 'thomas-nelson', title: 'O inverno do seu coração', project: 'o-inverno-do-seu-coracao' },
+    { id: 'venus-camiseta', title: { pt: 'Camiseta · Editora Vênus', en: 'T-shirt · Editora Vênus' } },
+    { id: 'livraria-atena', title: 'Com amor, Atena', project: 'com-amor-atena' },
+    { id: 'para-amelia', title: 'Para Amélia, com amor', project: 'para-amelia-com-amor' },
+    { id: 'venus-kit', title: { pt: 'Kit de autora · Editora Vênus', en: 'Author kit · Editora Vênus' } },
     { id: 'ouvi-dizer', title: 'Ouvi dizer que era você' },
-    { id: 'atena', title: 'Com amor, Atena', project: 'com-amor-atena' },
-  ] as { id: string; title: string; project?: string }[],
+    { id: 'rosto-atena', title: 'Com amor, Atena', project: 'com-amor-atena' },
+    { id: 'thomas-nelson', title: 'O inverno do seu coração', project: 'o-inverno-do-seu-coracao' },
+    { id: 'venus-ecobag', title: { pt: 'Ecobag · Editora Vênus', en: 'Tote bag · Editora Vênus' } },
+    { id: 'venus-marcador', title: { pt: 'Marcador · Editora Vênus', en: 'Bookmark · Editora Vênus' } },
+  ] as GalleryItem[],
 };
