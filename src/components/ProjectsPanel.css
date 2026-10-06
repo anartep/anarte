@@ -136,6 +136,19 @@
 .zoom__nav:hover { transform: scale(1.1); }
 .zoom__count { position: absolute; bottom: 18px; left: 50%; translate: -50% 0; color: var(--violet-200); font-size: 12px; letter-spacing: .2em; }
 
+/* desktop: info column on the left (sticky), images on the right, each image fits the visible area */
+@media (min-width: 701px) {
+  .pimg { width: min(100%, calc((100svh - 250px) * var(--ar, 1))); margin-inline: auto; }
+}
+@media (min-width: 1000px) {
+  .pdetail { max-width: 1320px; display: grid; grid-template-columns: minmax(240px, 310px) minmax(0, 1fr); column-gap: clamp(32px, 4vw, 64px); align-items: start; }
+  .pdetail__side { position: sticky; top: 0; }
+  .pdetail__head { margin-bottom: 0; }
+  .pdetail__title { font-size: var(--fs-xl); }
+  .pdetail__links { flex-direction: column; align-items: flex-start; }
+  .pdetail__nav { grid-column: 1 / -1; }
+}
+
 @media (max-width: 600px) {
   .panel { inset: 8px 0 0; border-radius: 22px 22px 0 0; }
   .pdetail__nav { grid-template-columns: 1fr; }

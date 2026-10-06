@@ -32,7 +32,7 @@ function toView(slug: string): ViewProject | null {
 function Img({ src, w, h, alt, onClick }: { src: string; w: number; h: number; alt: string; onClick?: () => void }) {
   const [loaded, setLoaded] = useState(false);
   return (
-    <button type="button" className={`pimg ${loaded ? 'is-loaded' : ''}`} style={{ aspectRatio: `${w} / ${h}` }} onClick={onClick} aria-label={alt}>
+    <button type="button" className={`pimg ${loaded ? 'is-loaded' : ''}`} style={{ aspectRatio: `${w} / ${h}`, ['--ar' as string]: (w / h).toFixed(4) }} onClick={onClick} aria-label={alt}>
       <img src={src} width={w} height={h} alt="" loading="lazy" decoding="async" onLoad={() => setLoaded(true)} />
     </button>
   );
@@ -138,22 +138,24 @@ export function ProjectsPanel() {
 
           {view && (
             <article className="pdetail" key={view.slug}>
-              <button type="button" className="pdetail__back" onClick={() => setProjectSlug(null)}>
-                <Arrow dir="left" /> {t(allProjects.back)}
-              </button>
-              <header className="pdetail__head">
-                <p className="eyebrow"><Sparkle /> {catLabel(view.category)}</p>
-                <h3 className="pdetail__title">{t(view.title)}</h3>
-                {view.client && <p className="pdetail__client">{view.client}</p>}
-                <div className="pdetail__links">
-                  {view.behance && (
-                    <a className="btn btn--ghost pdetail__behance" href={view.behance} target="_blank" rel="noopener noreferrer">
-                      <Behance /> {t(allProjects.behance)}
-                    </a>
-                  )}
-                  <span className="pdetail__hint">{t(allProjects.zoomHint)}</span>
-                </div>
-              </header>
+              <aside className="pdetail__side">
+                <button type="button" className="pdetail__back" onClick={() => setProjectSlug(null)}>
+                  <Arrow dir="left" /> {t(allProjects.back)}
+                </button>
+                <header className="pdetail__head">
+                  <p className="eyebrow"><Sparkle /> {catLabel(view.category)}</p>
+                  <h3 className="pdetail__title">{t(view.title)}</h3>
+                  {view.client && <p className="pdetail__client">{view.client}</p>}
+                  <div className="pdetail__links">
+                    {view.behance && (
+                      <a className="btn btn--ghost pdetail__behance" href={view.behance} target="_blank" rel="noopener noreferrer">
+                        <Behance /> {t(allProjects.behance)}
+                      </a>
+                    )}
+                    <span className="pdetail__hint">{view.images.length} {view.images.length === 1 ? t({ pt: 'imagem', en: 'image' }) : t(allProjects.images)} · {t(allProjects.zoomHint)}</span>
+                  </div>
+                </header>
+              </aside>
               <div className="pdetail__images">
                 {view.images.map((im, i) => (
                   <Img key={im.src} src={im.src} w={im.w} h={im.h} alt={`${t(view.title)} — ${i + 1}/${view.images.length}`} onClick={() => setZoom(i)} />
