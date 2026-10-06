@@ -1,4 +1,4 @@
-.works { background: var(--bg-soft); padding: clamp(40px, 5vw, 70px) 0 clamp(80px, 10vw, 140px); overflow: hidden; transition: background-color .4s var(--ease); }
+.works { background: var(--bg-soft); padding: clamp(28px, 4vw, 52px) 0 clamp(48px, 6vw, 80px); overflow: hidden; transition: background-color .4s var(--ease); }
 
 .ring {
   --cw: clamp(220px, 27vw, 370px);

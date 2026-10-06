@@ -124,6 +124,7 @@ export function Masthead() {
           <FaqLink />
           <LangToggle />
           <ThemeToggle />
+          <a className="btn quote-btn masthead__quote masthead__quote--bar" href="#contato">{t(ui.quote)}</a>
         </div>
       </div>
 
@@ -136,6 +137,7 @@ export function Masthead() {
         <div className="masthead__intro">
           <p className="masthead__tagline">{t(ui.tagline)}</p>
           <p className="masthead__status"><span className="dot" aria-hidden="true" />{t(ui.available)}</p>
+          <a className="btn quote-btn masthead__quote masthead__quote--intro" href="#contato">{t(ui.quoteLong)} <Sparkle /></a>
         </div>
       </div>
 
@@ -216,7 +218,7 @@ export function StickyNav() {
           <FaqLink compact />
           <LangToggle />
           <ThemeToggle />
-          <a className="btn btn--sun sticky-nav__cta" href="#contato" tabIndex={show ? 0 : -1}>{t(ui.quote)}</a>
+          <a className="btn quote-btn sticky-nav__cta" href="#contato" tabIndex={show ? 0 : -1}>{t(ui.quote)}</a>
         </div>
       </div>
     </div>

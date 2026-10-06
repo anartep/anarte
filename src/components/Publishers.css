@@ -1,7 +1,7 @@
-.publishers { background: var(--bg-soft); padding: clamp(30px, 4vw, 50px) 0 clamp(70px, 9vw, 120px); transition: background-color .4s var(--ease); }
+.publishers { background: var(--bg-soft); padding: clamp(24px, 3vw, 40px) 0 clamp(56px, 7vw, 90px); transition: background-color .4s var(--ease); }
 
 /* shared section header */
-.sec-head { display: grid; justify-items: center; text-align: center; gap: 14px; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-head { display: grid; justify-items: center; text-align: center; gap: 10px; margin-bottom: clamp(28px, 4vw, 48px); }
 .sec-head .section-title { max-width: 20ch; text-wrap: balance; }
 .sec-head__hint { font-size: var(--fs-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-muted); }
 

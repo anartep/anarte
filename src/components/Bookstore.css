@@ -1,0 +1,43 @@
+.bookstore { background: var(--bg-soft); padding: clamp(8px, 1.5vw, 20px) 0 clamp(56px, 7vw, 96px); transition: background-color .4s var(--ease); }
+.bookstore__inner { display: grid; justify-items: center; gap: clamp(22px, 3vw, 34px); }
+
+.polaroids { display: flex; justify-content: center; align-items: flex-start; gap: clamp(6px, 1.6vw, 22px); }
+.polaroids li { --rot: -4deg; --dy: 0px; }
+.polaroids li:nth-child(2) { --rot: 2.5deg; --dy: 14px; z-index: 1; }
+.polaroids li:nth-child(3) { --rot: -2deg; --dy: 4px; }
+
+.polaroid {
+  position: relative; display: grid; gap: 6px; width: clamp(108px, 15vw, 210px);
+  padding: 7% 7% 4%; background: #fffdf7; color: var(--ink);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1.5px var(--ink), 0 18px 30px -18px rgba(28, 10, 44, .7);
+  transform: translateY(var(--dy)) rotate(var(--rot));
+  transition: transform .5s var(--ease-spring), box-shadow .4s var(--ease);
+}
+:root[data-theme='night'] .polaroid { background: #f3ecdf; box-shadow: 0 22px 40px -20px #000; }
+.polaroid:hover, .polaroid:focus-visible {
+  z-index: 2; transform: translateY(calc(var(--dy) - 10px)) rotate(0deg) scale(1.06);
+  box-shadow: 0 0 0 1.5px var(--ink), 0 28px 40px -18px rgba(28, 10, 44, .75);
+}
+.polaroids li:has(.polaroid:hover) { z-index: 3; }
+.polaroid__photo { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--violet-200); }
+.polaroid__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.polaroid:hover .polaroid__photo img { transform: scale(1.05); }
+.polaroid__caption {
+  font-family: var(--font-display); font-size: clamp(1rem, .8rem + .7vw, 1.45rem); line-height: 1.05;
+  text-align: center; padding-top: 2px; letter-spacing: .01em;
+}
+/* fita adesiva */
+.polaroid__tape {
+  position: absolute; top: -9px; left: 50%; width: 42%; height: 18px; translate: -50% 0; rotate: -3deg;
+  background: color-mix(in srgb, var(--sun) 78%, transparent);
+  box-shadow: 0 1px 0 rgba(28, 10, 44, .15);
+  clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
+}
+.polaroids li:nth-child(2) .polaroid__tape { rotate: 4deg; background: color-mix(in srgb, var(--violet-300) 85%, transparent); }
+
+@media (max-width: 600px) {
+  .polaroid { padding: 6% 6% 3%; width: clamp(96px, 27vw, 140px); }
+  .polaroid__caption { font-size: .95rem; }
+  .polaroid__tape { height: 13px; top: -7px; }
+}

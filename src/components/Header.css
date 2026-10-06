@@ -154,6 +154,11 @@
 .sticky-nav__links { display: flex; justify-content: center; gap: clamp(12px, 2vw, 30px); }
 .sticky-nav__tools { display: flex; align-items: center; gap: 10px; }
 .sticky-nav__cta { min-height: 40px; padding: 0 1.2em; font-size: 11px; }
+.quote-btn { min-height: 40px; padding: 0 1.2em; font-size: 11px; }
+.masthead__quote--intro { display: flex; width: fit-content; margin-top: 20px; min-height: 46px; padding: 0 1.4em; }
+.masthead__quote--intro svg { width: 14px; height: 14px; }
+@media (min-width: 1181px) { .masthead__quote--intro { display: none; } }
+@media (max-width: 1180px) { .masthead__quote--bar { display: none; } }
 .faq-link--compact { height: 36px; }
 
 /* ================= MOBILE MENU ================= */
@@ -190,6 +195,7 @@
   .masthead__tagline { margin-inline: auto; }
   .masthead__main { padding-inline: 0; }
   .masthead__status { justify-content: center; }
+  .masthead__quote--intro { margin-inline: auto; }
   .sticky-nav__links { display: none; }
   .sticky-nav__inner { grid-template-columns: auto 1fr auto; }
   .sticky-nav__tools { grid-column: 3; }

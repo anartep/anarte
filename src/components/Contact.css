@@ -1,6 +1,6 @@
 .contact {
   position: relative; background: var(--bg-soft);
-  padding: clamp(70px, 9vw, 130px) 0 clamp(70px, 9vw, 120px);
+  padding: clamp(56px, 7vw, 100px) 0 clamp(56px, 7vw, 96px);
   border-top: 2px solid var(--line);
   transition: background-color .4s var(--ease);
 }

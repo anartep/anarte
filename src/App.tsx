@@ -7,6 +7,7 @@ import { Marquee } from './components/Marquee';
 import { About } from './components/About';
 import { Publishers } from './components/Publishers';
 import { Works } from './components/Works';
+import { Bookstore } from './components/Bookstore';
 import { Contact, Footer } from './components/Contact';
 import { ProjectsPanel } from './components/ProjectsPanel';
 import { FaqChat } from './components/FaqChat';
@@ -27,6 +28,7 @@ function Page() {
         <About />
         <Publishers />
         <Works />
+        <Bookstore />
         <Contact />
       </main>
       <Footer />

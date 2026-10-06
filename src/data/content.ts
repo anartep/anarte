@@ -40,6 +40,7 @@ export const ui = {
   menu: { pt: 'Menu', en: 'Menu' } as T,
   close: { pt: 'Fechar', en: 'Close' } as T,
   quote: { pt: 'Orçamento', en: 'Get a quote' } as T,
+  quoteLong: { pt: 'Solicitar orçamento', en: 'Request a quote' } as T,
   themeToLight: { pt: 'Ativar tema dia', en: 'Switch to day theme' } as T,
   themeToDark: { pt: 'Ativar tema noite', en: 'Switch to night theme' } as T,
   language: { pt: 'Idioma', en: 'Language' } as T,
@@ -244,4 +245,13 @@ export const faq = {
       ],
     },
   ] as FaqItem[],
+};
+
+export const bookstore = {
+  label: { pt: 'Nas livrarias', en: 'In bookstores' } as T,
+  items: [
+    { id: 'inverno', title: 'O inverno do seu coração', project: 'o-inverno-do-seu-coracao' },
+    { id: 'thomas-nelson', title: 'Thomas Nelson Brasil', project: 'o-inverno-do-seu-coracao' },
+    { id: 'atena', title: 'Com amor, Atena', project: 'com-amor-atena' },
+  ],
 };
