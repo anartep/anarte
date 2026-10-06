@@ -10,7 +10,7 @@
 .marquee__item { display: inline-flex; align-items: center; }
 .marquee__label {
   position: relative; padding: clamp(18px, 2vw, 26px) clamp(18px, 2.2vw, 34px);
-  font-size: clamp(1.3rem, .95rem + 1.6vw, 2.35rem); font-weight: 700; letter-spacing: -.01em; white-space: nowrap;
+  font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.4rem, 1rem + 1.7vw, 2.5rem); font-weight: 600; letter-spacing: -.01em; white-space: nowrap;
   transition: color .3s;
 }
 .marquee__label::after {
