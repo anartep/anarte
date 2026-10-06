@@ -2,14 +2,14 @@
 
 .ring {
   --cw: clamp(220px, 27vw, 370px);
-  position: relative; height: calc(var(--cw) * 1.42 + 56px);
+  position: relative; height: calc(var(--cw) * 1.25 + 90px);
   margin-top: 10px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
   outline: none;
 }
 .ring:focus-visible { outline: 2px dashed var(--focus); outline-offset: -10px; border-radius: 30px; }
 .ring.is-dragging { cursor: grabbing; }
 .ring__floor {
-  position: absolute; left: 50%; bottom: 6px; width: min(80%, 900px); height: 60px; translate: -50% 0;
+  position: absolute; left: 50%; bottom: 0; width: min(80%, 900px); height: 60px; translate: -50% 0;
   background: radial-gradient(50% 50% at 50% 50%, rgba(28, 10, 44, .32), transparent 70%);
   filter: blur(6px); pointer-events: none;
 }
@@ -17,8 +17,8 @@
 
 .ring__card {
   --shade: 0; --blur: 0px;
-  position: absolute; left: 50%; bottom: 40px; width: var(--cw); aspect-ratio: 4 / 5;
-  border-radius: 20px; overflow: hidden; transform-origin: 50% 100%;
+  position: absolute; left: 50%; top: 50%; margin-top: calc(var(--cw) * -0.625); width: var(--cw); aspect-ratio: 4 / 5;
+  border-radius: 20px; overflow: hidden; transform-origin: 50% 50%;
   background: var(--violet-200);
   box-shadow: 0 0 0 2.5px var(--ink), var(--card-shadow);
   will-change: transform;

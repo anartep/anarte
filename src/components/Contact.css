@@ -10,17 +10,21 @@
 .contact__list dt { font-size: var(--fs-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--fg-muted); }
 .contact__list dd { margin-top: 6px; }
 .contact__value {
-  position: relative; display: inline-flex; align-items: center; gap: 12px;
+  position: relative; display: inline-flex; align-items: center; gap: 12px; padding-bottom: 4px;
   font-size: clamp(1.15rem, .9rem + 1.1vw, 1.7rem); font-weight: 500; letter-spacing: -.01em; word-break: break-all;
-  background: linear-gradient(var(--sun), var(--sun)) 0 92% / 0 38% no-repeat;
-  transition: background-size .5s var(--ease);
+  transition: color .3s var(--ease);
 }
-:root[data-theme='night'] .contact__value { background-image: linear-gradient(rgba(169, 90, 248, .5), rgba(169, 90, 248, .5)); }
+.contact__value::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;
+  background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease);
+}
 .contact__value svg { width: 22px; height: 22px; flex-shrink: 0; opacity: 0; transform: translateX(-8px) rotate(-20deg); transition: opacity .3s, transform .45s var(--ease-spring); }
-.contact__value:hover { background-size: 100% 38%; }
+.contact__value:hover { color: var(--violet-700); }
+:root[data-theme='night'] .contact__value:hover { color: var(--violet-400); }
+.contact__value:hover::before { transform: scaleX(1); }
 .contact__value:hover svg { opacity: 1; transform: none; }
 .contact__value[data-tip]::after {
-  content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 4px); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 8px); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
   color: var(--fg-muted); opacity: 0; transition: opacity .3s;
 }
 .contact__value[data-tip]:hover::after { opacity: 1; }

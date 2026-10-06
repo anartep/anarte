@@ -59,9 +59,9 @@ export function Works() {
     // front → sides → small cards peeking above at the back → hidden behind
     const KF = [
       { x: 0, y: 0, s: 1 },
-      { x: 0.8, y: -0.03, s: 0.74 },
-      { x: 0.44, y: -0.74, s: 0.5 },
-      { x: 0, y: -0.82, s: 0.42 },
+      { x: 0.86, y: 0, s: 0.76 },
+      { x: 0.5, y: -0.06, s: 0.54 },
+      { x: 0, y: -0.08, s: 0.46 },
     ];
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
     const ease = (t: number) => t * t * (3 - 2 * t);

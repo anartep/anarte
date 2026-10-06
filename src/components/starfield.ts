@@ -9,22 +9,22 @@ interface Star {
 }
 interface Meteor { x: number; y: number; vx: number; vy: number; life: number; len: number }
 
-const PALETTE = ['#38d6f4', '#38d6f4', '#8eeaff', '#ffffff', '#d4abff', '#38d6f4', '#ffe05c'];
+const PALETTE = ['#38d6f4', '#38d6f4', '#8eeaff', '#ffffff', '#d4abff', '#38d6f4'];
+const BURST = ['#38d6f4', '#8eeaff', '#ffffff', '#38d6f4', '#d4abff'];
 const pick = <T,>(a: T[]) => a[(Math.random() * a.length) | 0];
 
-function sparkPath(ctx: CanvasRenderingContext2D, r: number) {
-  const k = r * 0.2;
-  ctx.beginPath();
-  ctx.moveTo(0, -r);
-  ctx.quadraticCurveTo(k, -k, r, 0);
-  ctx.quadraticCurveTo(k, k, 0, r);
-  ctx.quadraticCurveTo(-k, k, -r, 0);
-  ctx.quadraticCurveTo(-k, -k, 0, -r);
-  ctx.closePath();
+// same 4-point sparkle as the SVG icon used across the site (24×24, centred at 12,12)
+const SPARK = new Path2D('M12 0c.6 5.6 1.7 9.6 3.1 10.9 1.4 1.3 4.9 2.2 8.9 1.1-4 .9-7.5 1.8-8.9 3.1C13.7 16.4 12.6 19.4 12 24c-.6-4.6-1.7-7.6-3.1-8.9C7.5 13.8 4 12.9 0 12c4 1.1 7.5.2 8.9-1.1C10.3 9.6 11.4 5.6 12 0Z');
+function drawSpark(ctx: CanvasRenderingContext2D, r: number) {
+  const k = r / 12;
+  ctx.scale(k, k);
+  ctx.translate(-12, -12);
+  ctx.fill(SPARK);
 }
 
 export class StarField {
   private ctx: CanvasRenderingContext2D;
+  private fx: CanvasRenderingContext2D;
   private stars: Star[] = [];
   private trail: Star[] = [];
   private meteors: Meteor[] = [];
@@ -36,8 +36,9 @@ export class StarField {
   private io: IntersectionObserver;
   private visible = true;
 
-  constructor(private canvas: HTMLCanvasElement, private host: HTMLElement, private reduced = false) {
+  constructor(private canvas: HTMLCanvasElement, private fxCanvas: HTMLCanvasElement, private host: HTMLElement, private reduced = false) {
     this.ctx = canvas.getContext('2d')!;
+    this.fx = fxCanvas.getContext('2d')!;
     this.ro = new ResizeObserver(() => this.resize());
     this.ro.observe(host);
     this.io = new IntersectionObserver(([e]) => {
@@ -60,7 +61,7 @@ export class StarField {
     const dist = Math.hypot(x - this.mouse.lastX, y - this.mouse.lastY);
     this.mouse = { x, y, active: true, lastX: x, lastY: y };
     if (this.reduced || e.pointerType === 'touch') return;
-    const n = Math.min(3, Math.floor(dist / 14));
+    const n = Math.min(2, Math.floor(dist / 22));
     for (let i = 0; i < n; i++) this.spawnTrail(x, y, 0.6);
   };
   private onLeave = () => { this.mouse.active = false; this.mouse.x = this.mouse.y = -9999; };
@@ -70,40 +71,44 @@ export class StarField {
   };
 
   burst(x: number, y: number) {
-    const n = this.reduced ? 6 : 22;
+    const n = this.reduced ? 5 : 11;
+    const off = Math.random() * Math.PI;
     for (let i = 0; i < n; i++) {
-      const a = (i / n) * Math.PI * 2 + Math.random() * 0.3;
-      const sp = 60 + Math.random() * 220;
+      const a = off + (i / n) * Math.PI * 2 + (Math.random() - 0.5) * 0.35;
+      const sp = 90 + Math.random() * 170;
       this.trail.push({
-        x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, size: 3 + Math.random() * 7, rot: Math.random() * 6,
-        vr: (Math.random() - 0.5) * 6, phase: 0, color: pick(PALETTE), kind: Math.random() < 0.8 ? 'spark' : 'dot',
-        life: 0, maxLife: 0.9 + Math.random() * 0.8, alpha: 1,
+        x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, size: 4 + Math.random() * 5, rot: 0,
+        vr: (Math.random() - 0.5) * 3, phase: 1, color: pick(BURST), kind: 'spark',
+        life: 0, maxLife: 0.8 + Math.random() * 0.5, alpha: 1,
       });
     }
+    // central flash
+    this.trail.push({ x, y, vx: 0, vy: 0, size: 16, rot: 0, vr: 0, phase: 2, color: '#ffffff', kind: 'spark', life: 0, maxLife: 0.55, alpha: 1 });
     if (!this.running) this.draw(0);
   }
 
   private spawnTrail(x: number, y: number, s = 1) {
     this.trail.push({
       x: x + (Math.random() - 0.5) * 10, y: y + (Math.random() - 0.5) * 10,
-      vx: (Math.random() - 0.5) * 30, vy: 20 + Math.random() * 50, size: (2 + Math.random() * 5) * s,
-      rot: Math.random() * 6, vr: (Math.random() - 0.5) * 4, phase: 0, color: pick(PALETTE), kind: 'spark',
+      vx: (Math.random() - 0.5) * 24, vy: 18 + Math.random() * 36, size: (2.5 + Math.random() * 3.5) * s,
+      rot: 0, vr: (Math.random() - 0.5) * 2, phase: 0, color: pick(BURST), kind: 'spark',
       life: 0, maxLife: 0.7 + Math.random() * 0.6, alpha: 1,
     });
   }
 
   private makeStar(initial: boolean): Star {
-    const big = Math.random() < 0.16;
-    const kind: Kind = Math.random() < 0.55 ? 'spark' : 'dot';
-    const size = kind === 'dot' ? 0.8 + Math.random() * 2 : big ? 7 + Math.random() * 9 : 2.5 + Math.random() * 4.5;
-    const depth = size / 16;
+    const r = Math.random();
+    const kind: Kind = r < 0.7 ? 'spark' : 'dot';
+    const big = kind === 'spark' && Math.random() < 0.12;
+    const size = kind === 'dot' ? 0.8 + Math.random() * 1.2 : big ? 6 + Math.random() * 3.5 : 2.5 + Math.random() * 3;
+    const depth = size / 10;
     return {
       x: Math.random() * this.w,
       y: initial ? Math.random() * this.h : -20 - Math.random() * 80,
-      vx: -6 - Math.random() * 10 * (0.5 + depth),
-      vy: 14 + Math.random() * 26 + depth * 40,
-      size, rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.8,
-      phase: Math.random() * Math.PI * 2, color: pick(PALETTE), kind, alpha: 0.55 + Math.random() * 0.45,
+      vx: -4 - Math.random() * 7 * (0.5 + depth),
+      vy: 10 + Math.random() * 18 + depth * 26,
+      size, rot: (Math.random() - 0.5) * 0.6, vr: (Math.random() - 0.5) * 0.25,
+      phase: Math.random() * Math.PI * 2, color: pick(PALETTE), kind, alpha: 0.6 + Math.random() * 0.4,
     };
   }
 
@@ -111,11 +116,13 @@ export class StarField {
     const r = this.host.getBoundingClientRect();
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.w = Math.max(1, r.width); this.h = Math.max(1, r.height);
-    this.canvas.width = Math.round(this.w * this.dpr);
-    this.canvas.height = Math.round(this.h * this.dpr);
-    this.canvas.style.width = `${this.w}px`;
-    this.canvas.style.height = `${this.h}px`;
-    const target = Math.min(170, Math.round((this.w * this.h) / (this.w < 700 ? 6500 : 8500)));
+    for (const c of [this.canvas, this.fxCanvas]) {
+      c.width = Math.round(this.w * this.dpr);
+      c.height = Math.round(this.h * this.dpr);
+      c.style.width = `${this.w}px`;
+      c.style.height = `${this.h}px`;
+    }
+    const target = Math.min(48, Math.round((this.w * this.h) / (this.w < 700 ? 16000 : 24000)));
     while (this.stars.length < target) this.stars.push(this.makeStar(true));
     this.stars.length = target;
     if (this.reduced) this.draw(0); else this.start();
@@ -151,7 +158,9 @@ export class StarField {
       if (s.y > h + 30 || s.x < -40) Object.assign(s, this.makeStar(false), { x: Math.random() * (w + 200) });
     }
     for (const p of this.trail) {
-      p.life! += dt; p.x += p.vx * dt; p.y += p.vy * dt; p.vx *= 0.96; p.vy = p.vy * 0.96 + 30 * dt; p.rot += p.vr * dt;
+      p.life! += dt; p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt;
+      const drag = Math.pow(p.phase === 1 ? 0.035 : 0.3, dt);
+      p.vx *= drag; p.vy = p.vy * drag + (p.phase === 1 ? 12 : 0) * dt;
     }
     this.trail = this.trail.filter((p) => p.life! < p.maxLife!);
 
@@ -166,9 +175,11 @@ export class StarField {
   }
 
   private draw(time: number) {
-    const { ctx, dpr } = this;
+    const { ctx, fx, dpr } = this;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, this.w, this.h);
+    fx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    fx.clearRect(0, 0, this.w, this.h);
 
     for (const m of this.meteors) {
       const n = Math.hypot(m.vx, m.vy);
@@ -178,26 +189,38 @@ export class StarField {
       g.addColorStop(1, 'rgba(56,214,244,0)');
       ctx.strokeStyle = g; ctx.lineWidth = 2; ctx.lineCap = 'round';
       ctx.beginPath(); ctx.moveTo(m.x, m.y); ctx.lineTo(tx, ty); ctx.stroke();
-      ctx.save(); ctx.translate(m.x, m.y); ctx.fillStyle = '#fff'; sparkPath(ctx, 5); ctx.fill(); ctx.restore();
+      ctx.save(); ctx.translate(m.x, m.y); ctx.fillStyle = '#fff'; drawSpark(ctx, 6); ctx.restore();
     }
 
-    const drawOne = (s: Star, a: number) => {
-      ctx.globalAlpha = Math.max(0, Math.min(1, a));
-      ctx.fillStyle = s.color;
+    const drawOne = (s: Star, a: number, scale = 1, c: CanvasRenderingContext2D = ctx) => {
+      c.globalAlpha = Math.max(0, Math.min(1, a));
+      c.fillStyle = s.color;
       if (s.kind === 'dot') {
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill();
+        c.beginPath(); c.arc(s.x, s.y, s.size * scale, 0, Math.PI * 2); c.fill();
       } else {
-        ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(s.rot * 0.15); sparkPath(ctx, s.size); ctx.fill(); ctx.restore();
+        c.save(); c.translate(s.x, s.y); c.rotate(s.rot); drawSpark(c, s.size * scale); c.restore();
       }
     };
     for (const s of this.stars) {
-      const tw = 0.65 + 0.35 * Math.sin(time * 2.2 + s.phase);
-      if (s.size > 8) { ctx.shadowColor = s.color; ctx.shadowBlur = 12; } else ctx.shadowBlur = 0;
-      drawOne(s, s.alpha * tw);
+      const tw = 0.6 + 0.4 * Math.sin(time * 1.6 + s.phase);
+      if (s.size > 6) { ctx.shadowColor = s.color; ctx.shadowBlur = 10; } else ctx.shadowBlur = 0;
+      drawOne(s, s.alpha * tw, 0.9 + 0.1 * tw);
     }
     ctx.shadowBlur = 0;
-    for (const p of this.trail) drawOne(p, 1 - p.life! / p.maxLife!);
     ctx.globalAlpha = 1;
+    // interaction particles live on the front canvas (above the character)
+    fx.shadowColor = '#38d6f4'; fx.shadowBlur = 8;
+    for (const p of this.trail) {
+      const t = p.life! / p.maxLife!;
+      if (p.phase === 2) { // flash: grows fast, fades
+        drawOne(p, 1 - t, 0.4 + t * 1.6, fx);
+        continue;
+      }
+      const sc = t < 0.18 ? t / 0.18 : 1 - (t - 0.18) / 0.82 * 0.6;
+      drawOne(p, 1 - t * t, sc, fx);
+    }
+    fx.shadowBlur = 0;
+    fx.globalAlpha = 1;
   }
 
   destroy() {

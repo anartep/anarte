@@ -14,12 +14,13 @@ export function Hero() {
   const { t } = useLang();
   const ref = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const fxRef = useRef<HTMLCanvasElement>(null);
   const reduced = useReducedMotion();
   usePointerParallax(ref, !reduced);
 
   useEffect(() => {
-    if (!canvasRef.current || !ref.current) return;
-    const field = new StarField(canvasRef.current, ref.current, reduced);
+    if (!canvasRef.current || !fxRef.current || !ref.current) return;
+    const field = new StarField(canvasRef.current, fxRef.current, ref.current, reduced);
     return () => field.destroy();
   }, [reduced]);
 
@@ -64,6 +65,7 @@ export function Hero() {
         <Sparkle className="hero__big hero__big--4" />
         <Sparkle className="hero__big hero__big--5" />
       </div>
+      <canvas className="hero__fx" ref={fxRef} aria-hidden="true" />
       <div className="hero__shade" aria-hidden="true" />
       <p className="hero__hint" aria-hidden="true">{t(ui.starsHint)}</p>
       <p className="hero__caption"><Sparkle /> {t(ui.heroCaption)} — Ana Paula Silva</p>

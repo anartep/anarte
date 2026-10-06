@@ -19,6 +19,7 @@
 
 /* falling stars */
 .hero__stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero__fx { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
 
 /* character cut-out, face centred */
 .hero__char {
@@ -39,14 +40,14 @@
 /* near: big sparkles like the ones she paints */
 .hero__fg { z-index: 3; pointer-events: none; transform: translate3d(calc(var(--px) * 34px), calc(var(--py) * 22px + var(--sy) * -120px), 0); }
 .hero__big { position: absolute; color: var(--cyan); filter: drop-shadow(0 0 14px rgba(56, 214, 244, .55)); animation: twinkle 4.5s ease-in-out infinite; }
-.hero__big--1 { width: clamp(46px, 6vw, 92px); top: 12%; left: 9%; animation-delay: -1s; }
-.hero__big--2 { width: clamp(30px, 3.6vw, 58px); top: 24%; right: 12%; animation-delay: -2.2s; }
-.hero__big--3 { width: clamp(56px, 7vw, 110px); bottom: 14%; right: 6%; animation-delay: -3.1s; }
-.hero__big--4 { width: clamp(20px, 2.2vw, 34px); bottom: 26%; left: 22%; animation-delay: -.4s; color: #d4abff; filter: drop-shadow(0 0 10px rgba(212, 171, 255, .6)); }
-.hero__big--5 { width: clamp(16px, 1.6vw, 26px); top: 9%; left: 58%; animation-delay: -2.7s; color: #fff; }
+.hero__big--1 { width: clamp(28px, 3.4vw, 52px); top: 14%; left: 10%; animation-delay: -1s; }
+.hero__big--2 { width: clamp(20px, 2.2vw, 34px); top: 26%; right: 13%; animation-delay: -2.2s; }
+.hero__big--3 { width: clamp(32px, 3.8vw, 58px); bottom: 18%; right: 8%; animation-delay: -3.1s; }
+.hero__big--4 { width: clamp(14px, 1.4vw, 22px); bottom: 28%; left: 22%; animation-delay: -.4s; color: #d4abff; filter: drop-shadow(0 0 10px rgba(212, 171, 255, .6)); }
+.hero__big--5 { width: clamp(12px, 1.1vw, 18px); top: 10%; left: 60%; animation-delay: -2.7s; color: #fff; }
 
 .hero__shade {
-  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
   background:
     radial-gradient(120% 70% at 50% 40%, transparent 55%, rgba(0, 0, 0, .45) 100%),
     linear-gradient(to bottom, rgba(0, 0, 0, .15), transparent 18%, transparent 78%, rgba(0, 0, 0, .55));
