@@ -155,6 +155,12 @@
 .sticky-nav__tools { display: flex; align-items: center; gap: 10px; }
 .sticky-nav__cta { min-height: 40px; padding: 0 1.2em; font-size: 11px; }
 .quote-btn { min-height: 40px; padding: 0 1.2em; font-size: 11px; }
+/* botão de orçamento: só contorno, igual ao idioma e ao tema; amarelo no hover */
+.btn.quote-btn, :root[data-theme='night'] .btn.quote-btn {
+  --b-bg: transparent; --b-fg: currentColor; --b-hover: var(--sun); --b-hover-fg: var(--ink);
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+.btn.quote-btn:hover { box-shadow: inset 0 0 0 1.5px var(--sun); }
 .masthead__quote--intro { display: flex; width: fit-content; margin-top: 20px; min-height: 46px; padding: 0 1.4em; }
 .masthead__quote--intro svg { width: 14px; height: 14px; }
 @media (min-width: 1181px) { .masthead__quote--intro { display: none; } }

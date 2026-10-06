@@ -3,6 +3,23 @@
    Paleta do Canva, com tons corrigidos (contraste AA para texto)
    ============================================================ */
 
+/* serifada editorial — só nos títulos de seção */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('../assets/fonts/fraunces-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('../assets/fonts/fraunces-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 /* letra à mão, no espírito do carimbo ANA/RTE — só no nome "Ana Paula Silva" */
 @font-face {
   font-family: 'Just Another Hand';
@@ -177,7 +194,7 @@ html { scrollbar-color: var(--violet-600) transparent; scrollbar-width: thin; }
 }
 .eyebrow svg { width: 14px; height: 14px; animation: spin 9s linear infinite; }
 
-.section-title { font-size: var(--fs-2xl); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; word-spacing: -.3em; }
+.section-title { font-family: 'Fraunces', Georgia, serif; font-size: var(--fs-2xl); font-weight: 600; line-height: 1.05; letter-spacing: -0.01em; }
 
 /* ---------- títulos com onda nas letras + risco à mão (hover) ---------- */
 .wave-title { position: relative; width: fit-content; cursor: default; }
