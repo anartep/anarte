@@ -4,6 +4,7 @@ import { about, contact } from '../data/content';
 import { usePointerParallax, useReducedMotion } from '../hooks';
 import { SocialRow } from './Header';
 import { Arrow, Sparkle } from './Icons';
+import { WaveText } from './WaveText';
 import portrait from '../assets/about/portrait.webp';
 import './About.css';
 
@@ -50,22 +51,8 @@ export function About() {
       <div className="container about__grid">
         <div className="about__text">
           <p className="eyebrow" data-reveal><Sparkle /> {t(about.label)}</p>
-          <h2 className="section-title about__name" id="about-title" aria-label={contact.name} data-reveal style={{ ['--d' as string]: '.08s' }}>
-            <span className="about__letters" aria-hidden="true">
-              {contact.name.split(' ').map((word, wi, arr) => {
-                const offset = arr.slice(0, wi).join(' ').length + (wi ? 1 : 0);
-                return (
-                  <span key={wi} className="about__word">
-                    {Array.from(word).map((ch, ci) => (
-                      <span key={ci} className="about__ch" style={{ ['--l' as string]: offset + ci }}>{ch}</span>
-                    ))}
-                  </span>
-                );
-              })}
-            </span>
-            <svg className="about__scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M3 13 C 40 6, 80 16, 120 10 S 200 4, 240 11 S 285 15, 297 7" />
-            </svg>
+          <h2 className="section-title about__name wave-title" id="about-title" aria-label={contact.name} data-reveal style={{ ['--d' as string]: '.08s' }}>
+            <WaveText text={contact.name} />
           </h2>
           <p className="about__role" data-reveal style={{ ['--d' as string]: '.14s' }}>{t(about.role)}</p>
           <div className="about__bio">

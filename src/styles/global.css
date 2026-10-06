@@ -179,6 +179,25 @@ html { scrollbar-color: var(--violet-600) transparent; scrollbar-width: thin; }
 
 .section-title { font-size: var(--fs-2xl); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; }
 
+/* ---------- títulos com onda nas letras + risco à mão (hover) ---------- */
+.wave-title { position: relative; width: fit-content; cursor: default; }
+.wt-word { display: inline-block; white-space: nowrap; }
+.wt-ch { display: inline-block; transform-origin: 50% 90%; }
+@media (hover: hover) {
+  .wave-title:hover .wt-ch { animation: letter-wave .7s var(--ease) both; animation-delay: calc(var(--l) * 32ms); }
+}
+@keyframes letter-wave {
+  0% { transform: none; }
+  40% { transform: translateY(-.14em) rotate(-4deg); }
+  100% { transform: none; }
+}
+.wt-scribble {
+  position: absolute; left: -2%; bottom: -.12em; width: 104%; height: .22em; overflow: visible; pointer-events: none;
+  clip-path: inset(-50% 100% -50% 0); transition: clip-path .75s var(--ease) .1s;
+}
+.wt-scribble path { fill: none; stroke: var(--scribble, var(--sun)); stroke-width: 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.wave-title:hover .wt-scribble { clip-path: inset(-50% 0 -50% 0); }
+
 /* ---------- buttons ---------- */
 .btn {
   --b-bg: var(--ink); --b-fg: var(--cream); --b-hover: var(--sun); --b-hover-fg: var(--ink);

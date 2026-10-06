@@ -4,6 +4,7 @@ import { works } from '../data/content';
 import { projects } from '../data/projects';
 import { useReducedMotion } from '../hooks';
 import { Arrow, Grid, Sparkle } from './Icons';
+import { WaveText } from './WaveText';
 import './Works.css';
 
 const N = works.items.length;
@@ -176,7 +177,7 @@ export function Works() {
       <div className="container">
         <header className="sec-head">
           <p className="eyebrow" data-reveal><Sparkle /> {t(works.label)}</p>
-          <h2 className="section-title" id="works-title" data-reveal style={{ ['--d' as string]: '.06s' }}>{t(works.title)}</h2>
+          <h2 className="section-title wave-title" id="works-title" aria-label={t(works.title)} data-reveal style={{ ['--d' as string]: '.06s' }}><WaveText text={t(works.title)} /></h2>
           <p className="sec-head__hint" data-reveal style={{ ['--d' as string]: '.12s' }}>{t(works.hint)}</p>
         </header>
       </div>
