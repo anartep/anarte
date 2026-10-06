@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLang } from '../context';
 import { about, contact } from '../data/content';
 import { usePointerParallax, useReducedMotion } from '../hooks';
@@ -24,16 +24,48 @@ export function About() {
   const reduced = useReducedMotion();
   usePointerParallax(fig, !reduced);
   const ring = t(about.ring).repeat(2);
+  const ringRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const el = ringRef.current;
+    const host = fig.current;
+    if (!el || !host || reduced) return;
+    let target = 1, rate = 1, raf = 0;
+    const tick = () => {
+      rate += (target - rate) * 0.06;
+      el.getAnimations().forEach((a) => { a.playbackRate = rate; });
+      if (Math.abs(target - rate) > 0.005) raf = requestAnimationFrame(tick);
+      else raf = 0;
+    };
+    const go = (v: number) => { target = v; if (!raf) raf = requestAnimationFrame(tick); };
+    const enter = () => go(3.2);
+    const leave = () => go(1);
+    host.addEventListener('pointerenter', enter);
+    host.addEventListener('pointerleave', leave);
+    return () => { cancelAnimationFrame(raf); host.removeEventListener('pointerenter', enter); host.removeEventListener('pointerleave', leave); };
+  }, [reduced]);
 
   return (
     <section className="about" id="sobre" aria-labelledby="about-title">
       <div className="container about__grid">
         <div className="about__text">
           <p className="eyebrow" data-reveal><Sparkle /> {t(about.label)}</p>
-          <h2 className="section-title about__name" id="about-title" data-reveal style={{ ['--d' as string]: '.08s' }}>
-            {contact.name.split(' ').map((w, i) => (
-              <span key={i} className="about__word" style={{ ['--w' as string]: i }}>{w}</span>
-            ))}
+          <h2 className="section-title about__name" id="about-title" aria-label={contact.name} data-reveal style={{ ['--d' as string]: '.08s' }}>
+            <span className="about__letters" aria-hidden="true">
+              {contact.name.split(' ').map((word, wi, arr) => {
+                const offset = arr.slice(0, wi).join(' ').length + (wi ? 1 : 0);
+                return (
+                  <span key={wi} className="about__word">
+                    {Array.from(word).map((ch, ci) => (
+                      <span key={ci} className="about__ch" style={{ ['--l' as string]: offset + ci }}>{ch}</span>
+                    ))}
+                  </span>
+                );
+              })}
+            </span>
+            <svg className="about__scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M3 13 C 40 6, 80 16, 120 10 S 200 4, 240 11 S 285 15, 297 7" />
+            </svg>
           </h2>
           <p className="about__role" data-reveal style={{ ['--d' as string]: '.14s' }}>{t(about.role)}</p>
           <div className="about__bio">
@@ -50,7 +82,7 @@ export function About() {
 
         <figure className="about__figure" ref={fig} data-reveal>
           <div className="about__tilt">
-            <svg className="about__ring" viewBox="0 0 400 400" aria-hidden="true">
+            <svg className="about__ring" ref={ringRef} viewBox="0 0 400 400" aria-hidden="true">
               <defs>
                 <path id="ring-path" d="M200 200 m-178 0 a178 178 0 1 1 356 0 a178 178 0 1 1 -356 0" />
               </defs>
