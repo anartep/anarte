@@ -47,7 +47,8 @@ export function Works() {
       const sw = stage.clientWidth;
       const card = cardRefs.current[0];
       W = card ? card.offsetWidth : 300;
-      RX = Math.min(sw / 2 - W * 0.3, W * 1.15);
+      // side cards (at 0.86·RX, scale .76) keep a 16px margin from the screen edge
+      RX = Math.max(W * 0.5, Math.min((sw / 2 - 16 - 0.38 * W) / 0.86, W * 1.15));
     };
     measure();
     const ro = new ResizeObserver(measure);

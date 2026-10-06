@@ -100,6 +100,6 @@
 
 @media (max-width: 600px) {
   .chat { right: 0; bottom: 0; width: 100%; height: 100%; height: 100svh; border-radius: 0; box-shadow: none; transform-origin: calc(100% - 46px) calc(100% - 46px); }
-  .faq-fab { height: 56px; padding: 0 16px; }
+  .faq-fab { display: none; }
 }
 @media (max-width: 420px) { .chat__head::after { display: none; } }
